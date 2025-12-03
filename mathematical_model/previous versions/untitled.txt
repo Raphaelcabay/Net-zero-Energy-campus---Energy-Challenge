@@ -1,0 +1,60 @@
+Parameters, value
+PLANNING_HORIZON, 1
+HOURS_PER_YEAR, 8760
+KAPPA_L, 
+KAPPA_S,
+KAPPA_C,
+INTEREST_PLOSS, 
+INTEREST_SUB, 
+b_max, 0.1
+CF,
+CSI,
+CVI,
+CLINE,
+CUN,
+CL,
+N_CAP_TOTAL,
+N_CAP_MAX,
+SG,
+V_MIN,
+V_MAX,
+
+
+#Planning horizon
+model.PLANNING_HORIZON = Param(doc="Planning horizon in years") # 1 year ?
+model.HOURS_PER_YEAR = Param(doc="Hours per year") # 8760
+
+# Capital recovery rates
+model.KAPPA_L = Param(doc="Capital recovery rate for line construction") 
+model.KAPPA_S = Param(doc="Capital recovery rate for substation construction")
+model.KAPPA_C = Param(doc="Capital recovery rate for capacitor construction")
+
+#Interest rate
+model.INTEREST_PLOSS = Param(doc="Interest rate for real power loss costs")
+model.INTEREST_SUB = Param(doc="Interest rate for substation operational costs")
+
+
+# Voltage drop bound if line not used
+model.b_max = Param(doc="Voltage drop bound for inactive circuits")
+
+# Installation costs, etc.
+model.CF = Param(doc="Installation cost of fixed capacitor banks")
+model.CSI = Param(model.substations, doc="Fixed cost of substation at node i")
+model.CVI = Param(model.substations, doc="Operational cost of substation at node i per (kW)^2 per hour")
+model.CLINE = Param( model.lines, model.conductor_types, doc="Construction cost for line (i,j) with conductor a ")
+model.CUN = Param(doc="Annualized cost per standard capacitor unit")
+
+# Energy cost
+model.CL = Param(doc="Energy cost in USD/kWh")
+
+# Total max number of capacitor banks
+model.N_CAP_TOTAL = Param(doc="Total maximum number of capacitor banks")
+# Max number of capacitor units per bus
+model.N_CAP_MAX = Param(model.buses, doc="Maximum number of capacitor units per bus")
+
+#Maximum apparent power
+model.SG = Param(model.buses, doc="Maximum apparent power limit of substation construction at node i")
+
+# Voltage limits 
+model.V_MIN = Param(doc="Minimum voltage magnitude")
+model.V_MAX = Param(doc="Maximum voltage magnitude")

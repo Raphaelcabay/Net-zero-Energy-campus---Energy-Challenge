@@ -1,0 +1,5 @@
+Conductor_type,Resistance,Reactance,Prix_au_km,I_MAX,Voltage_level
+2 Al,0.512,0.276,35000,150,low
+4/0 Al,0.360,0.205,42000,180, low
+70 Al,0.312,0.154,78000,183,medium
+120 Al,0.206,0.116,103000,320,medium
